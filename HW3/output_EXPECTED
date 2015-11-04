@@ -1,0 +1,79 @@
+---Building jar file
+javac Employee.java
+javac Company.java
+echo "Main-Class: Company" > manifest.txt
+echo "Building test.jar"
+Building test.jar
+jar cvfm test.jar manifest.txt Employee.class Company.class
+added manifest
+adding: Employee.class(in = 407) (out= 264)(deflated 35%)
+adding: Company.class(in = 717) (out= 452)(deflated 36%)
+
+Company.class
+Employee.class
+manifest.txt
+test.jar
+
+---Executing jar
+echo "Building test.jar"
+Building test.jar
+jar cvfm test.jar manifest.txt Employee.class Company.class
+added manifest
+adding: Employee.class(in = 407) (out= 264)(deflated 35%)
+adding: Company.class(in = 717) (out= 452)(deflated 36%)
+java -jar test.jar
+The employees are Dexter and Debra
+
+Company.class
+Employee.class
+manifest.txt
+test.jar
+
+---Cleaning
+echo "Removing class files and manifest, if any"
+Removing class files and manifest, if any
+rm *.class manifest.txt
+echo "Removing jar"
+Removing jar
+rm test.jar
+
+ls: *.class: No such file or directory
+ls: *.jar: No such file or directory
+ls: manifest.txt: No such file or directory
+
+---Redundant cleaning should not be an error
+echo "Removing class files and manifest, if any"
+Removing class files and manifest, if any
+rm *.class manifest.txt
+rm: *.class: No such file or directory
+rm: manifest.txt: No such file or directory
+jsmake: [clean] Error 1 (ignored)
+
+---However, other errors should NOT be ignored
+javac NoSuchClass.java
+javac: file not found: NoSuchClass.java
+Usage: javac <options> <source files>
+use -help for a list of possible options
+jsmake: *** [NoSuchClass.class] Error 1
+
+---Executing jar
+javac Employee.java
+javac Company.java
+echo "Main-Class: Company" > manifest.txt
+echo "Building test.jar"
+Building test.jar
+jar cvfm test.jar manifest.txt Employee.class Company.class
+added manifest
+adding: Employee.class(in = 407) (out= 264)(deflated 35%)
+adding: Company.class(in = 717) (out= 452)(deflated 36%)
+java -jar test.jar
+The employees are Dexter and Debra
+
+---Cleaning
+echo "Removing class files and manifest, if any"
+Removing class files and manifest, if any
+rm *.class manifest.txt
+echo "Removing jar"
+Removing jar
+rm test.jar
+

@@ -1,0 +1,28 @@
+---Calling jsmake with no arguments
+javac Employee.java
+
+Employee.class
+
+---Calling jsmake again; nothing should happen
+jsmake: `Employee.class' is up to date.
+
+Employee.class
+
+---Changing timestamp of source should require jsmake to rebuild Employee.class
+javac Employee.java
+
+Employee.class
+
+---Calling jsmake to delete all class files
+rm *.class
+
+ls: *.class: No such file or directory
+
+---Calling phony target
+echo "Called fake target"
+Called fake target
+
+---Calling phony target should still work if there is a file of the same name
+echo "Called fake target"
+Called fake target
+

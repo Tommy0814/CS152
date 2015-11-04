@@ -1,0 +1,29 @@
+---Calling jsmake with no arguments
+javac Employee.java
+
+Employee.class
+
+---Calling jsmake again; nothing should happen
+jsmake: `Employee.class' is up to date.
+
+Employee.class
+
+---Calling jsmake to delete all class files
+rm *.class
+
+ls: *.class: No such file or directory
+
+---Calling jsmake to build Company.class
+javac Employee.java
+javac Company.java
+
+Company.class
+Employee.class
+
+The employees are Dexter and Debra
+
+---Calling jsmake to delete all class files
+rm *.class
+
+ls: *.class: No such file or directory
+
